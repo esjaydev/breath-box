@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  overflow: hidden;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#contador{
+  font-size: 3rem;
+  font-weight: 600;
+  color: rgb(242, 255, 223);
+}
+#instruccion{
+  font-size: 1.5rem;
+  color: rgb(242, 255, 223);
+}
+.container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: 4000;
+  background-color: rgb(37, 70, 52);
+}</style>
+  <title>BreathBox</title>
+</head>
+<body>
+  <div class="container">
+      <p id="instruccion">Inhala</p>
+      <p id="contador">1</p>
+  </div>
+</body>
+  <script>let instruccion = document.getElementById('instruccion')
+let contador = document.getElementById('contador')
+let fondo = document.querySelector('.container')
+let conteo = 0
+let ciclo = 1
+
+setInterval(function(){
+cuenta()
+switch (ciclo){
+  case 1:
+  instruccion.innerText = 'Inhala'
+  fondo.style.transition = '4000ms linear'
+  fondo.style.backgroundColor = 'rgb(101, 161, 128)'
+  break
+  case 2:
+  instruccion.innerText = 'Sostiene'
+  break
+  case 3:
+  instruccion.innerText = 'Exhala'
+  fondo.style.backgroundColor = 'rgb(37, 70, 52)'
+  break
+  case 4:
+  instruccion.innerText = 'Sostiene'
+  break
+}
+  console.log(ciclo)
+if (conteo == 4){
+  ciclo++
+  if (ciclo == 5){
+    ciclo = 1
+  }}
+},1000)
+
+function cuenta(){
+  if (conteo == 4){
+    conteo = 1
+  }else{
+  conteo++
+  }
+  contador.innerText = conteo
+  return conteo
+}</script>
+</html>
